@@ -1,0 +1,12 @@
+FILE FREEFORM = 7E374E25-8E01-4FEE-87F2-390C23C606CD {
+  SECTION RAW = Lanai/APIC.aml
+!if $(ENABLE_SECUREBOOT) == 0
+  SECTION RAW = Lanai/DBG2.aml
+!endif
+  SECTION RAW = Lanai/DSDT.aml
+  SECTION RAW = Lanai/FACP.aml
+  SECTION RAW = Lanai/GTDT.aml
+  SECTION RAW = Lanai/PPTT.aml
+# SECTION RAW = Lanai/SPCR.aml
+  SECTION UI = "AcpiTables"
+}

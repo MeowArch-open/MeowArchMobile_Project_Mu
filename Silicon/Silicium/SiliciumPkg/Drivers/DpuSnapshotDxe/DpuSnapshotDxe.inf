@@ -1,0 +1,38 @@
+## @file
+#
+#  Snapshot the DPU registers while ABL's configuration is still live, and print
+#  them to the DEBUG log. Read-only; never writes a display register.
+#
+#  Only meaningful on a build that does NOT use the stock DisplayDxe -- with
+#  SimpleFbDxe the DPU is still exactly as ABL programmed it, which is the whole
+#  point of the capture. Remove the INF line from the platform's DXE.inc to
+#  disable it; there is no runtime switch.
+#
+##
+
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = DpuSnapshotDxe
+  FILE_GUID                      = 5A8083CB-48EE-4BE3-9832-D8CDA5BADA25
+  MODULE_TYPE                    = DXE_DRIVER
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = DpuSnapshotEntry
+
+[Sources]
+  DpuSnapshot.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  SiliciumPkg/SiliciumPkg.dec
+
+[LibraryClasses]
+  DebugLib
+  DxeServicesTableLib
+  IoLib
+  UefiBootServicesTableLib
+  UefiDriverEntryPoint
+  UefiLib
+
+[Depex]
+  TRUE
